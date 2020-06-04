@@ -5,6 +5,7 @@ class StudentList extends Component {
    
      render() {           
     const students=this.props.students;
+    // console.log('inside student', this.props)
         return(
            
             <div className="container">
@@ -34,6 +35,7 @@ class StudentList extends Component {
 const mapStateToProps = (state,ownprops) =>{
     let id=ownprops.match.params.id
     return{
+        // students: state.student
             students:state.student.students.filter(student=>student.currentyear===id)
         }
 }

@@ -2,17 +2,28 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 const Summary =({sem})=>{
-    return(
+    return (
         <div className="post-card">
-              {sem && sem.map(semName=>{
-                return (
-                <div className="card z-depth-0" key={semName.id}>
-                    <div className="card-title">{semName.name}</div>
-                    <div className="card-content"><Link to={'/studentlist/'+semName.id}>{semName.name} Student List</Link></div>
-                </div>
-                )
-            })}                        
-       </div>
+            <div className="row">                               
+                {sem && sem.map(semName => {
+                    return (
+                        <div className="col s4 m4">
+                            <div className="card blue-grey darken-1">
+                                <div className="card-content white-text">
+                                    <span className="card-title">{semName.name}</span>
+                                </div>
+                                <div className="card-action">
+                                    <Link to={'/studentlist/' + semName.id}>Student List</Link>
+                                    {/* <Link to={'/studyMaterial/' + semName.id}>Study Material</Link>
+                                    <Link to={'/syllabus/' + semName.id}>Syllabus</Link> */}
+                                </div>
+                            </div>
+                        </div>
+                    )
+               })}                 
+               
+            </div>
+        </div>
     )
 }
 export default Summary

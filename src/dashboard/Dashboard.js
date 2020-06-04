@@ -1,30 +1,30 @@
 import React, {Component} from 'react'
-import Notifications from '../dashboard/Notifications'
+// import Notifications from '../dashboard/Notifications'
 import {connect} from 'react-redux'
 import Summary from '../Details/Summary'
+import {firestoreConnect} from 'react-redux-firebase'
+import {compose} from 'redux'
 
 class Dashboard extends Component {
     render(){
         const {sem}=this.props;
         return(
-            <div className="post-card">
-                <div className="row">
-                    <div className="col s12 m6">
-                        <Summary sem={sem}/>
-                    </div>              
-                    <div className="col s12 m5 offset-m1">
-                        <Notifications />
-                    </div>
-                </div>
+            <div className="container-fluid">
+                 <Summary sem={sem}/>
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) =>{
+    console.log(state)
     return{
-        students:state.student.students,
+        students:state.firestore.ordered.students,
         sem:state.year.year
     }
 }
-export default connect(mapStateToProps)(Dashboard)
+export default compose(
+    firestoreConnect(['students']),
+    
+    connect(mapStateToProps)
+)(Dashboard)

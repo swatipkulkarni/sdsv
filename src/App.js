@@ -9,6 +9,7 @@ import Signin from './auth/Signin'
 import SignUp from './auth/Signup'
 import AddStudent from './Student/AddStudent'
 import StudentList from './Details/StudentList'
+import StudyMaterial from './Details/StudyMaterial'
 
 class App extends Component{
   render(){
@@ -25,7 +26,8 @@ class App extends Component{
           <Route path="/signup" component={SignUp} />
           <Route path="/add" component={AddStudent} />
           <Route path="/studentlist/:id" component={StudentList} />
-          <Route path="/student/:id" component={StudentDetails} />
+          <Route path="/student/:id" component={StudentDetails} />StudyMaterial
+          <Route path="/studyMaterial/:id" component={StudyMaterial} />
         </Switch>
       </div>
     </BrowserRouter>
