@@ -27,6 +27,12 @@ const studentReducer = (state=initState, action)=>{
         case 'ADD_STUDENT_ERROR':
             console.log("error occured",action.err)
             return state;
+        case 'ADD_MARKS':
+            console.log("Marks added")
+            return state;
+        case 'ADD_MARKS_ERROR':
+            console.log("error occured",action.err)
+            return state;
         default:
             return state
         }

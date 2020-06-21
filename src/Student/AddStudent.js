@@ -12,7 +12,9 @@ class AddStudent extends Component {
         pincode:"",
         city:"",
         state:"",
-        country:""
+        country:"",
+        currentYear:1,
+        marksSheet:[{assignment:0,written:0,total:0}]
     }
     handleChange = (e) =>{
     this.setState({
@@ -21,9 +23,9 @@ class AddStudent extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log("state",this.state)
         this.props.addStudent(this.state)
-        alert("added to firestore")
+        alert("New student Added successfully!")
+        this.props.history.push('/')
     }   
      render() {
         return (
@@ -65,7 +67,9 @@ class AddStudent extends Component {
                     <div className="input-field">
                         <label htmlFor="country">Country</label>
                         <input type="text" id="country" onChange={this.handleChange} />
-                    </div>                    
+                    </div> 
+                        <input type="hidden" id="currentYear" onChange={this.handleChange} />
+                        <input type="hidden" id="marksSheet" onChange={this.handleChange} />
                     <div className="input-field">                        
                         <button className="btn pink lighten-1 z-depth-0" onClick={this.handleSubmit}>Register Student</button>
                     </div>
